@@ -1,0 +1,17 @@
+module.exports = {
+  proxy: "http://nginx-web-server", // proxy the nginx container by service name
+  files: ["/app/**/*.{php,html,css,js}"], // path inside the container (matches your volume)
+  host: "0.0.0.0", // bind to all interfaces inside the container
+  port: 3000, // internal BrowserSync port
+  ui: { port: 3001 }, // BrowserSync UI
+  open: false,
+  cors: true,
+  reloadDelay: 200,
+  serveStatic: ["/app"],
+  socket: {
+    // this is the publicly reachable address that the injected client will use.
+    // set it to host:externalPort that you map (LIVE_RELOAD_PORT)
+    // e.g. "localhost:8080" same as LIVE_RELOAD_PORT=8080
+    domain: "localhost:8080",
+  },
+};

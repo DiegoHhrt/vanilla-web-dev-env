@@ -1,0 +1,77 @@
+services:
+  nginx:
+    image: nginx:1.28.0-alpine
+    container_name: nginx-web-server
+    ports:
+      - ${WEB_PORT}:80
+    volumes:
+      - ${WEB_VOL}:/var/www/html
+      - ${WEB_CONF}:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - php
+    networks:
+      local_dev_env:
+        ipv4_address: 172.20.0.30
+
+  php:
+    build: ./
+    container_name: php
+    volumes:
+      - ${WEB_VOL}:/var/www/html
+    networks:
+      local_dev_env:
+        ipv4_address: 172.20.0.20
+
+  db:
+    image: mariadb:11
+    container_name: ${MYSQL_CONTAINER_NAME}
+    env_file:
+      - .env
+    volumes:
+      - ${MYSQL_VOL}:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      local_dev_env:
+        ipv4_address: 172.20.0.10
+
+  db_admin:
+    image: phpmyadmin:5.2.3
+    container_name: db_admin
+    env_file:
+      - .env
+    ports:
+      - ${DB_ADMIN_PORT}:80
+    depends_on:
+      - db
+    networks:
+      local_dev_env:
+        ipv4_address: 172.20.0.50
+  dev:
+    image: node:22-alpine
+    container_name: dev-server
+    working_dir: /app
+    volumes:
+      - ${WEB_VOL}:/app
+    command: >
+      sh -c "npx browser-sync start --config /app/bs-config.js"
+    ports:
+      - ${LIVE_RELOAD_PORT}:3000
+      - "3001:3001"
+    depends_on:
+      - nginx
+    networks:
+      local_dev_env:
+        ipv4_address: 172.20.0.100
+
+volumes:
+  db_data:
+    name: ${MYSQL_VOL}
+    external: false
+networks:
+  local_dev_env:
+    name: local_dev_env
+    external: false
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24

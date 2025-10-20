@@ -1,0 +1,20 @@
+# -- web
+WEB_VOL=./
+WEB_CONF=./nginx.conf
+WEB_PORT=9020
+
+# -- db
+MYSQL_VOL=db_data
+MYSQL_ROOT_PASSWORD=root
+MYSQL_DATABASE=lab_admin
+MYSQL_USER=dev
+MYSQL_PASSWORD=devpass
+MYSQL_CONTAINER_NAME=mariadb
+
+# -- db admin
+DB_ADMIN_PORT=9021
+PMA_HOST=mariadb
+PMA_PORT=3306
+
+# -- live reload
+LIVE_RELOAD_PORT=8080
