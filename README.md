@@ -48,3 +48,9 @@ No other changes are necessary unless you have specific requirements.
     docker compose down
 
     ```
+
+## Notes
+
+A demo web application is included in order to test the setup. This docker cluster should be oblivious to a project's internal structure as long as the WEB_VOL path is mapped to the project's root folder.
+
+To test how to access different template routes navigate to: `http://localhost:8080/demo-project/templates/another-entrypoint/entry.html`
