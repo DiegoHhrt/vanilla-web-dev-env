@@ -1,6 +1,6 @@
 # vanilla-web-dev-env
 
-A very bare-bones vanilla web-app development environment intended as a replacement for Xampp because Xampp is lame
+A very bare-bones vanilla web-app development environment intended as a replacement for Xampp because even for people refusing to use node and a framework, Xampp is lame
 
 ## Setup
 
