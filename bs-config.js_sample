@@ -1,5 +1,5 @@
 module.exports = {
-  proxy: "http://nginx-web-server", // proxy the nginx container by service name
+  proxy: "http://nginx-web-server", // Must match the nginx container service name
   files: ["/app/**/*.{php,html,css,js}"], // path inside the container (matches your volume)
   host: "0.0.0.0", // bind to all interfaces inside the container
   port: 3000, // internal BrowserSync port
