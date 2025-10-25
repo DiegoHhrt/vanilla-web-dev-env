@@ -14,8 +14,7 @@ services:
         ipv4_address: 172.20.0.30
 
   php:
-    build: ./
-    container_name: php
+    image: obsidian117/vanilla-webdev-envrironment:latest
     volumes:
       - ${WEB_VOL}:/var/www/html
     networks:
