@@ -9,7 +9,6 @@ A very bare-bones vanilla web-app development environment intended as a replacem
 Grab the following files and drop them into the root of your project folder:
 
 - `compose.yaml`
-- `Dockerfile`
 - `bs-config.js_sample` (rename to `bs-config.js` after downloading)
 - `.env` (create from `sample._env`)
 
