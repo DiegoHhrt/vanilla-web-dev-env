@@ -34,7 +34,7 @@ No other changes are necessary unless you have specific requirements.
 1.  Build and start the containers from the root of your project folder:
 
     ```bash
-    docker compose up -d --build
+    docker compose up -d
     ```
 
 2.  Access your web application at `http://localhost:8080` (or the port you specified in the `.env` file).
