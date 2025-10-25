@@ -17,7 +17,8 @@ Grab the following files and drop them into the root of your project folder:
 1.  **.env file**
     It is recommended to leave the environment variables values as default if no specific reason to change them, except for database credentials and database name.
 
-         - `MYSQL_CONTAINER_NAME`: You can change the container name that will identify the database service so it matches your existing setup if needed.
+    `MYSQL_CONTAINER_NAME`:
+    You can change the container name that will identify the database service so it matches your existing setup if needed.
 
 2.  **bs-config.js file**
     No changes needed unless you want to change the BrowserSync port or domain.
@@ -69,4 +70,3 @@ In case you're running into issues with the live refresh not working on windows 
   This will force BrowserSync to use polling to detect file changes, which can be more reliable on certain Windows setups.
 
   Note that depending on the polling interval you set, your developer environment specs and the size of your project folder this might have (or not) a noticeable performance impact.
-  This will force BrowserSync to use polling to detect file changes, which can be more reliable on certain Windows setups.
