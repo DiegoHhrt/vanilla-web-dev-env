@@ -54,3 +54,20 @@ No other changes are necessary unless you have specific requirements.
 A demo web application is included in order to test the setup. This docker cluster should be oblivious to a project's internal structure as long as the WEB_VOL path is mapped to the project's root folder.
 
 To test how to access different template routes navigate to: `http://localhost:8080/demo-project/templates/another-entrypoint/entry.html`
+
+In case you're running into issues with the live refresh not working on windows either:
+
+- Verify that docker desktop is configured to use the WSL2 or VirtioFS backend
+- Add the following to your `bs-config.js` file:
+
+  ```js
+  watchOptions: {
+      usePolling: true,
+      interval: 1000,
+  },
+  ```
+
+  This will force BrowserSync to use polling to detect file changes, which can be more reliable on certain Windows setups.
+
+  Note that depending on the polling interval you set, your developer environment specs and the size of your project folder this might have (or not) a noticeable performance impact.
+  This will force BrowserSync to use polling to detect file changes, which can be more reliable on certain Windows setups.
