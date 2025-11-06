@@ -10,6 +10,7 @@ Grab the following files and drop them into the root of your project folder:
 
 - `compose.yaml`
 - `bs-config.js_sample` (rename to `bs-config.js` after downloading)
+- `nginx.conf_sample` (rename to `nginx.conf` after downloading)
 - `.env` (create from `sample._env`)
 
 ### Configuration
