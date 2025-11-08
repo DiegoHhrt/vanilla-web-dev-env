@@ -6,7 +6,7 @@ A very bare-bones vanilla web-app development environment intended as a replacem
 
 ### Prerequisites
 
-Grab the following files and drop them into the root of your project folder:
+Grab the following files and drop them into the **root** of your project folder:
 
 - `compose.yaml`
 - `bs-config.js_sample` (rename to `bs-config.js` after downloading)
@@ -19,7 +19,7 @@ Grab the following files and drop them into the root of your project folder:
     It is recommended to leave the environment variables values as default if no specific reason to change them, except for database credentials and database name.
 
     `MYSQL_CONTAINER_NAME`:
-    You can change the container name that will identify the database service so it matches your existing setup if needed. It has to be the same as the `PMA_HOST` variable.
+    You can change the container name that will identify the database service so it matches your existing setup if needed. It has to be the same as the `PMA_HOST` variable to maintain communication between containers.
 
 2.  **Database configuration in your web application**
 
@@ -33,11 +33,11 @@ Grab the following files and drop them into the root of your project folder:
 
     `MYSQL_DATABASE`: db_name
 
+
     ```php
         <?php
         define("DBUSER", "user_string"); //Same as MYSQL_USER
-        define("DBHOST", "host_name"); //This has to be the same as the flavour of db you're using.
-                                       //In this case, EXACTLY: mariadb but can be postgres, mysql, etc.
+        define("DBHOST", "host_name"); //This has to be the same name as the database service name inside the docker compose file  
         define("PASSWORD", "a-verY-s3curePW"); //Same as MYSQL_PASSWORD
         define("DB", "db_name"); //Same as MYSQL_DATABASE
 
@@ -54,10 +54,10 @@ Grab the following files and drop them into the root of your project folder:
         }
     ```
 
-3.  **bs-config.js file**
+4.  **bs-config.js file**
     No changes needed unless you want to change the BrowserSync port or domain.
 
-4.  **nginx configuration**
+5.  **nginx configuration**
     The root field must match the container's side volume path defined in `compose.yaml` (`/var/www/html` by default).
     If you change the volume path in `compose.yaml`, make sure to update the nginx config accordingly.
 
